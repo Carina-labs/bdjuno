@@ -6,17 +6,17 @@ require (
 	github.com/Carina-labs/nova v0.6.6-rc5
 	github.com/cosmos/cosmos-sdk v0.45.8
 	github.com/cosmos/gaia/v7 v7.0.2
-	github.com/forbole/juno/v3 v3.4.0
-	github.com/go-co-op/gocron v1.18.0
+	github.com/forbole/juno/v3 v3.3.0
+	github.com/go-co-op/gocron v1.17.0
 	github.com/gogo/protobuf v1.3.3
 	github.com/jmoiron/sqlx v1.3.5
-	github.com/lib/pq v1.10.7
+	github.com/lib/pq v1.10.6
 	github.com/pelletier/go-toml v1.9.5
-	github.com/prometheus/client_golang v1.14.0
+	github.com/prometheus/client_golang v1.13.0
 	github.com/proullon/ramsql v0.0.0-20181213202341-817cee58a244
-	github.com/rs/zerolog v1.28.0
-	github.com/spf13/cobra v1.6.1
-	github.com/stretchr/testify v1.8.1
+	github.com/rs/zerolog v1.27.0
+	github.com/spf13/cobra v1.5.0
+	github.com/stretchr/testify v1.8.0
 	github.com/tendermint/tendermint v0.34.21
 	google.golang.org/grpc v1.49.0
 	gopkg.in/yaml.v3 v3.0.1
@@ -29,6 +29,7 @@ require (
 	github.com/ChainSafe/go-schnorrkel v0.0.0-20200405005733-88cbf1b4c40d // indirect
 	github.com/CosmWasm/wasmd v0.29.0-rc1 // indirect
 	github.com/CosmWasm/wasmvm v1.1.1 // indirect
+	github.com/Microsoft/go-winio v0.5.2 // indirect
 	github.com/Workiva/go-datastructures v1.0.53 // indirect
 	github.com/armon/go-metrics v0.4.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
@@ -39,6 +40,7 @@ require (
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/coinbase/rosetta-sdk-go v0.7.0 // indirect
 	github.com/confio/ics23/go v0.7.0 // indirect
+	github.com/containerd/continuity v0.3.0 // indirect
 	github.com/cosmos/btcutil v1.0.4 // indirect
 	github.com/cosmos/cosmos-proto v1.0.0-alpha7 // indirect
 	github.com/cosmos/go-bip39 v1.0.0 // indirect
@@ -85,7 +87,7 @@ require (
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/hdevalence/ed25519consensus v0.0.0-20210204194344-59a8610d2b87 // indirect
 	github.com/improbable-eng/grpc-web v0.15.0 // indirect
-	github.com/inconshreveable/mousetrap v1.0.1 // indirect
+	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/jmhodges/levigo v1.0.0 // indirect
 	github.com/klauspost/compress v1.15.9 // indirect
 	github.com/libp2p/go-buffer-pool v0.1.0 // indirect
@@ -98,15 +100,16 @@ require (
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/mtibben/percent v0.2.1 // indirect
 	github.com/onsi/gomega v1.18.1 // indirect
+	github.com/opencontainers/runc v1.1.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.5 // indirect
 	github.com/petermattis/goid v0.0.0-20180202154549-b0b1615b78e5 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/prometheus/client_model v0.3.0 // indirect
+	github.com/prometheus/client_model v0.2.0 // indirect
 	github.com/prometheus/common v0.37.0 // indirect
 	github.com/prometheus/procfs v0.8.0 // indirect
 	github.com/rakyll/statik v0.1.7 // indirect
-	github.com/rcrowley/go-metrics v0.0.0-20200313005456-10cdbea86bc0 // indirect
+	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/regen-network/cosmos-proto v0.3.1 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
 	github.com/rs/cors v1.8.2 // indirect
@@ -135,14 +138,16 @@ require (
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/genproto v0.0.0-20220725144611-272f38e5d71b // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
+	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	nhooyr.io/websocket v1.8.6 // indirect
+	nhooyr.io/websocket v1.8.7 // indirect
 )
 
 replace (
+	github.com/cosmos/ibc-go/v3 => github.com/Carina-labs/ibc-go/v3 v3.3.1-nova-rc6
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
-	github.com/tendermint/tendermint => github.com/forbole/tendermint v0.34.13-0.20210820072129-a2a4af55563d
+	github.com/gravity-devs/liquidity => github.com/gravity-devs/liquidity v1.5.2
+	github.com/tendermint/tendermint => github.com/MonikaCat/tendermint v0.34.20-0.20220510093325-405517310d66
 	google.golang.org/grpc => google.golang.org/grpc v1.33.2
-
 )
