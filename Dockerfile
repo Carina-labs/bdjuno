@@ -7,22 +7,24 @@ COPY . ./
 ## Enabe the lines below if chain supports cosmwasm ##
 ## module to properly build docker image            ##
 ######################################################
-#RUN apk update && apk add --no-cache ca-certificates build-base git
-#ADD https://github.com/CosmWasm/wasmvm/releases/download/v1.1.1/libwasmvm_muslc.aarch64.a /lib/libwasmvm_muslc.aarch64.a
-#ADD https://github.com/CosmWasm/wasmvm/releases/download/v1.1.1/libwasmvm_muslc.x86_64.a /lib/libwasmvm_muslc.x86_64.a
-#RUN sha256sum /lib/libwasmvm_muslc.aarch64.a | grep 9ecb037336bd56076573dc18c26631a9d2099a7f2b40dc04b6cae31ffb4c8f9a
-#RUN sha256sum /lib/libwasmvm_muslc.x86_64.a | grep 6e4de7ba9bad4ae9679c7f9ecf7e283dd0160e71567c6a7be6ae47c81ebe7f32
-## Copy the library you want to the final location that will be found by the linker flag `-lwasmvm_muslc`
-#RUN cp /lib/libwasmvm_muslc.$(uname -m).a /lib/libwasmvm_muslc.a
+ARG GHTOKEN
+RUN git config --global url."https://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@github.com/".insteadOf "https://github.com/" && go env -w GOPRIVATE=github.com/Carina-labs
+RUN apk update && apk add --no-cache ca-certificates build-base git
+ADD https://github.com/CosmWasm/wasmvm/releases/download/v1.1.1/libwasmvm_muslc.aarch64.a /lib/libwasmvm_muslc.aarch64.a
+ADD https://github.com/CosmWasm/wasmvm/releases/download/v1.1.1/libwasmvm_muslc.x86_64.a /lib/libwasmvm_muslc.x86_64.a
+RUN sha256sum /lib/libwasmvm_muslc.aarch64.a | grep 9ecb037336bd56076573dc18c26631a9d2099a7f2b40dc04b6cae31ffb4c8f9a
+RUN sha256sum /lib/libwasmvm_muslc.x86_64.a | grep 6e4de7ba9bad4ae9679c7f9ecf7e283dd0160e71567c6a7be6ae47c81ebe7f32
+# Copy the library you want to the final location that will be found by the linker flag `-lwasmvm_muslc`
+RUN cp /lib/libwasmvm_muslc.$(uname -m).a /lib/libwasmvm_muslc.a
 
 RUN go mod download
-RUN make build
+#RUN make build
 
 ##################################################
 ## Enabe line below if chain supports cosmwasm  ##
 ## module to properly build docker image        ##
 ##################################################
-#RUN LINK_STATICALLY=true BUILD_TAGS="muslc" make build
+RUN LINK_STATICALLY=true BUILD_TAGS=muslc make build
 
 
 FROM alpine:latest
@@ -30,7 +32,8 @@ FROM alpine:latest
 ## Enabe line below if chain supports cosmwasm  ##
 ## module to properly build docker image        ##
 ##################################################
-#RUN apk update && apk add --no-cache ca-certificates build-base
+# RUN apk update && apk add --no-cache ca-certificates build-base
 WORKDIR /bdjuno
+COPY ./hasura /etc/hasura
 COPY --from=builder /go/src/github.com/forbole/bdjuno/build/bdjuno /usr/bin/bdjuno
 CMD [ "bdjuno" ]

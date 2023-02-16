@@ -57,12 +57,18 @@ func (m *Module) handleMsgSubmitProposal(tx *juno.Tx, index int, msg *govtypes.M
 		return fmt.Errorf("error while getting proposal: %s", err)
 	}
 
+	var content govtypes.Content
+	err = m.cdc.UnpackAny(proposal.Content, &content)
+	if err != nil {
+		return fmt.Errorf("error while unpacking proposal content: %s", err)
+	}
+
 	// Store the proposal
 	proposalObj := types.NewProposal(
 		proposal.ProposalId,
 		proposal.ProposalRoute(),
 		proposal.ProposalType(),
-		proposal.GetContent(),
+		content,
 		proposal.Status.String(),
 		proposal.SubmitTime,
 		proposal.DepositEndTime,
